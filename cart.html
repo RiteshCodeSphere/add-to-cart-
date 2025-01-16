@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Add To Cart</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <div id="cart" class="cart" data-totalitems="0">
+        <i class="fas fa-shopping-cart"></i>
+    </div>
+    <div class="page-wrapper">
+        <button id="addtocart">
+            Add To Cart
+            <span class="cart-item"></span>
+        </button>
+    </div>
+    <script>
+        document.getElementById('addtocart').addEventListener('click', function () {
+    const button = this;
+    const cart = document.getElementById('cart');
+    const cartTotal = parseInt(cart.getAttribute('data-totalitems')) + 1;
+
+    button.classList.add('sendtocart');
+
+    setTimeout(() => {
+        button.classList.remove('sendtocart');
+        cart.setAttribute('data-totalitems', cartTotal);
+        cart.classList.add('shake');
+        setTimeout(() => {
+            cart.classList.remove('shake');
+        }, 500);
+    }, 1000);
+});
+
+    </script>
+</body>
+</html>

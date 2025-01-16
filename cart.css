@@ -1,0 +1,120 @@
+html, body {
+    height: 100%;
+    min-height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #7886e5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.page-wrapper {
+    min-height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+button {
+    padding: 10px 30px;
+    border: none;
+    background: #021ed3;
+    color: white;
+    position: relative;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cart-item {
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    top: -10px;
+    right: -10px;
+    display: none;
+}
+
+button.sendtocart .cart-item {
+    display: block;
+    animation: xAxis 1s forwards cubic-bezier(1.0, 0.44, 0.84, 0.165);
+}
+
+.cart-item::before {
+    content: '1';
+    display: block;
+    line-height: 24px;
+    height: 24px;
+    width: 24px;
+    background: #2bd156;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    animation: yAxis 1s forwards cubic-bezier(0.165, 0.84, 0.44, 1.0);
+}
+
+.cart {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: #3b4cb8;
+    display: grid;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cart i {
+    font-size: 25px;
+    color: #fff;
+}
+
+.cart::before {
+    content: attr(data-totalitems);
+    font-size: 12px;
+    font-weight: 600;
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: #2bd156;
+    line-height: 24px;
+    padding: 0 5px;
+    height: 24px;
+    min-width: 24px;
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.cart.shake {
+    animation: shakeCart 0.4s ease-in-out forwards;
+}
+
+@keyframes xAxis {
+    100% {
+        transform: translateX(calc(-50vh + 75px));
+    }
+}
+
+@keyframes shakeCart {
+    25% {
+        transform: translateX(6px);
+    }
+    50% {
+        transform: translateX(-4px);
+    }
+    75% {
+        transform: translateX(2px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes yAxis {
+    100% {
+        transform: translateY(-50px);
+        opacity: 0;
+ 
